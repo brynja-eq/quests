@@ -30,6 +30,17 @@ function event_trade(e)
 		e.self:Say("<cough> Great! Thank you so much. Here is a small gratuity for a job well done. Thank you again. <cough> Antonius Bayle and the People of Qeynos appreciate all yo have done.");
 		eq.delete_global("tax_collection");
 		e.other:Ding();
+		--:: Give a random reward: 13053 - Brass Ring, 10010 - Copper Amulet, 10018 - Hematite, 10017 - Turquoise
+		local item_random = math.random(100);
+		if item_random < 25 then
+			e.other:SummonItem(13053); -- Brass Ring
+		elseif item_random < 50 then
+			e.other:SummonItem(10010); -- Copper Amulet
+		elseif item_random < 75 then
+			e.other:SummonItem(10018); -- Hematite
+		else
+			e.other:SummonItem(10017); -- Turquoise
+		end
 		e.other:Faction(219,10,0); -- Faction: Antonius Bayle
 		e.other:Faction(262,10,0); -- Faction: Guards of Qeynos
 		e.other:Faction(304,-15,0); -- Faction: Ring of Scale
